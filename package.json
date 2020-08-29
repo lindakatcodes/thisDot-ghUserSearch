@@ -1,0 +1,25 @@
+{
+  "name": "this-dot-gh-search",
+  "version": "1.0.0",
+  "description": "Code Exercise for This Dot Labs JS Interview",
+  "main": "index.html",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.26.7"
+  },
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindakatcodes/thisDot-ghUserSearch.git"
+  },
+  "author": "Linda Thompson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lindakatcodes/thisDot-ghUserSearch/issues"
+  },
+  "homepage": "https://github.com/lindakatcodes/thisDot-ghUserSearch#readme"
+}
