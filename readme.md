@@ -18,7 +18,7 @@ This project uses Vue and Parcel. To run this locally, follow these steps:
 
 2. You'll need to get an OAuth token from GitHub to run this yourself in development. You can find the [steps to get an OAuth token here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). Store this token in a `.env` file on your local machine. **Make sure not to add this file to your public repo!**
 
-3. Run the dev server and you're good to go!
+3. Run the dev server and you're good to go! The file that contains all the functional code is `App.vue`. Styles are in their own page (because I started out in straight JS and already had them mostly worked out there).
 
     ```bash
     npm run dev
