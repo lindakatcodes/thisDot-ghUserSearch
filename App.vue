@@ -16,8 +16,8 @@
         <div class="result-item" v-for="person in users" :key="person.cursor">
           <img :src="person.node.avatarUrl" class="result-img">
           <div class="result-names">
-            <a :href="person.node.url" class="username">{{ person.node.login }}</a>
-            <a :href="person.node.url" v-if="person.node.name" class="display">{{ person.node.name }}</a>
+            <a :href="person.node.url" class="username" target="_blank">{{ person.node.login }}</a>
+            <a :href="person.node.url" v-if="person.node.name" class="display" target="_blank">{{ person.node.name }}</a>
           </div>
           <div class="result-info">
             <div class="result-tidbits">  
@@ -29,7 +29,7 @@
           </div>
           <div class="result-repos" v-if="person.node.pinnedItems.edges.length > 0">
             <div class="repo-wrapper" v-for="(repo, index) in person.node.pinnedItems.edges" :key="index">
-              <a :href="repo.node.url" class="repo-name">{{ repo.node.name }}</a>
+              <a :href="repo.node.url" class="repo-name" target="_blank">{{ repo.node.name }}</a>
               <p class="repo-desc">{{ repo.node.description }}</p>
               <ul class="repo-lang" v-if="repo.node.languages && repo.node.languages.edges.length > 0">
                 <li v-for="(lang, index) in repo.node.languages.edges" :key="index">{{ lang.node.name }}</li>

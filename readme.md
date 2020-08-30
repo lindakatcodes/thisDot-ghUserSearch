@@ -4,9 +4,9 @@ A project created for This Dot Labs.
 
 This project uses GitHub's GraphQL API to search for users and return interesting information on them! Will show a profile card showing their photo, name, bio (if provided), followers, star count, and their top 3 pinned repositories, if they exist.
 
-This site is hosted on Netlify! You can check it out here:
+This site is hosted on Netlify! You can check it out here: <https://thisdot-githubsearch.netlify.app/>
 
-## To Run the Site
+## To Run the Site Locally
 
 This project uses Vue and Parcel. To run this locally, follow these steps:
 
@@ -25,3 +25,12 @@ This project uses Vue and Parcel. To run this locally, follow these steps:
     ```
 
 That should be it! Parcel provides a local dev server that will read the `index.html` page and get all the necessary data.
+
+## Improvements To Make in the Future
+
+There are some things I'd like to update at some point. Those are:
+
+- Ideally, I'd like to use a serverless function to make the API calls and store my personal token. The way it currently is isn't the most secure, though it works for now! Would not mind restructuring the API calls as well, cleaning them up a little. There's a bit of repetitiveness that could be handled better.
+- Some of the styling could use improvements - initially I wanted some horizontal cards for larger screens, I'd like the repo lists to not have the `hr` on the last item, I did not have a chance to check the colors for contrast. These wouldn't be the hardest to do, I just ran out of time.
+
+### Thanks for checking this out! Please feel free to reach out if you have questions!
