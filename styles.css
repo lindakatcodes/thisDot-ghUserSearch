@@ -15,11 +15,11 @@ h1 {
   font-family: serif;
 }
 
-h2 {
+h2, h3 {
   text-align: center;
 }
 
-.form-wrapper {
+.search-wrapper {
   display: flex;
   margin-top: 2%;
 }
@@ -36,6 +36,10 @@ h2 {
   background: #bebebe;
 }
 
+.loading {
+  text-align: center;
+}
+
 .results-wrapper {
   margin-top: 6%;
 }
@@ -46,6 +50,7 @@ h2 {
   margin: 0 auto 4%;
   border: 1px solid #bebebe;
   display: flex;
+  flex-flow: column;
   flex-wrap: wrap;
   justify-content: center;
   border-bottom: 2px solid darkslategray;
@@ -58,15 +63,17 @@ h2 {
 }
 
 .result-names {
-  text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-.display {
-  color: darkblue;
+username {
+  color: blue;
   text-decoration: underline;
 }
 
-.username {
+.display {
   color: darkslategray;
   opacity: 0.9;
   text-decoration: none;
@@ -87,7 +94,8 @@ h2 {
 }
 
 .result-bio {
-  margin: 0 2% 0 4%;
+  text-align: center;
+  margin: 1%;
 }
 
 .result-repos {
@@ -101,6 +109,7 @@ h2 {
 .repo-name {
   margin-top: 1%;
   font-weight: bold;
+  color: blue;
 }
 
 .repo-desc {
@@ -113,4 +122,38 @@ h2 {
   font-size: 0.8rem;
   padding: 0;
   margin-top: 1%;
+}
+
+hr {
+  width: 55%;
+  color: lightgray;
+}
+
+.pagination {
+  display: grid;
+  grid-template-areas: "prev next";
+  gap: 5%;
+  justify-content: center;
+  margin-bottom:6%;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.prev-arrow {
+  grid-area: prev;
+}
+
+.next-arrow {
+  grid-area: next;
+}
+
+@media screen and (min-width: 700px) {
+  .search-wrapper {
+    width: 50%;
+    margin: 0 auto;
+  }
 }
