@@ -1,6 +1,6 @@
 {
   "name": "this-dot-gh-search",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Code Exercise for This Dot Labs JS Interview",
   "main": "index.html",
   "dependencies": {
