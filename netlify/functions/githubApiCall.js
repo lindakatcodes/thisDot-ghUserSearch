@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
+// sets the actual query, with a variable depending on which type of query this is: initial, paginate forward, paginate backward
 const gqlQuery = (type) => `query($query: String!) {
   search(query: $query, type: USER, ${type}) {
     userCount
@@ -55,12 +56,9 @@ const gqlQuery = (type) => `query($query: String!) {
 }`
 
 exports.handler = async function (event) {
-
   const variables = {
     query: event.queryStringParameters.q
   }
-
-  const type = event.queryStringParameters.type;
 
   const endpoint = 'https://api.github.com/graphql';
   
@@ -70,7 +68,7 @@ exports.handler = async function (event) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${process.env.TOKEN}`
     },
-    body: JSON.stringify({ query: gqlQuery(type), variables })
+    body: JSON.stringify({ query: gqlQuery(event.queryStringParameters.type), variables })
   };
 
   const userData = await fetch(endpoint, options)
@@ -88,13 +86,8 @@ exports.handler = async function (event) {
     })
     .catch(err => console.error(err))
 
-  // console.log(userData);
-
   return {
     statusCode: 200,
     body: JSON.stringify(userData),
   }
 }
-  
-  // const gqlQuery = `${direction === "forward" ? fwdQuery : backQuery}
-  //   
