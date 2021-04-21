@@ -13,31 +13,7 @@
       <h2 v-show="noUsers">Sorry, it looks like there's no results for that search! Please try a new name or check your spelling.</h2>
       <h2 v-show="userCount > 0">Found {{ userCount }} results!</h2>
       <div class="results-wrapper">
-        <div class="result-item" v-for="person in users" :key="person.cursor">
-          <img :src="person.avatarUrl" class="result-img">
-          <div class="result-names">
-            <a :href="person.url" class="username" target="_blank">{{ person.login }}</a>
-            <a :href="person.url" v-if="person.name" class="display" target="_blank">{{ person.name }}</a>
-          </div>
-          <div class="result-info">
-            <div class="result-tidbits">  
-              <p class="hireable" v-if="person.isHireable"><img src="../static/icons/exclamation-circle.svg" class="icons-hire"> For Hire!</p>
-              <p class="followers"><img src="../static/icons/user.svg" class="icons-tidbits"> {{ person.followers.totalCount }} followers</p>
-              <p class="starred"><img src="../static/icons/star.svg" class="icons-tidbits"> {{ person.starredRepositories.totalCount }} starred repos</p>
-            </div>
-            <p class="result-bio">{{ person.bio }}</p>
-          </div>
-          <div class="result-repos" v-if="person.pinnedItems.edges.length > 0">
-            <div class="repo-wrapper" v-for="(repo, index) in person.pinnedItems.edges" :key="index">
-              <a :href="repo.node.url" class="repo-name" target="_blank">{{ repo.node.name }}</a>
-              <p class="repo-desc">{{ repo.node.description }}</p>
-              <ul class="repo-lang" v-if="repo.node.languages && repo.node.languages.edges.length > 0">
-                <li v-for="(lang, index) in repo.node.languages.edges" :key="index">{{ lang.node.name }}</li>
-              </ul>
-              <hr>
-            </div>
-          </div>
-        </div>
+        <UserCard v-for="person in users" :key="person.cursor" :person="person" />
       </div>
       <div class="pagination" v-if="pageInfo.prev || pageInfo.next">
         <button type="button" class="prev-arrow" v-if="pageInfo.prev" v-on:click="getData(pageInfo.firstUser, 'backward')"><img src="../static/icons/chevron-left.svg" class="icons-arrows"> Prev Page</button>
@@ -49,8 +25,12 @@
 
 <script>
 import Vue from "vue";
+import UserCard from "./components/userCard.vue";
 
 export default Vue.extend({
+  components: {
+    UserCard,
+  },
   data() {
     return {
       queryText: '',
@@ -84,14 +64,20 @@ export default Vue.extend({
     // call GH GraphQL API to get user data
     async getData(cursor, direction) {
       this.loading = true;
-      this.clearData();
 
-      //scrolls user to top of page
-      window.scroll({
-        top: 0,
+      //if this is a paginated call, scroll user to top of page
+      if (direction !== 'init') {
+        window.scroll({
+          top: 0,
         left: 0,
         behavior: 'smooth'
       });
+      }
+
+      // if this is a first call, clear any previous data
+      if (direction === 'init') {
+        this.clearData();
+      }
 
       // determine which type of query params we need to send our gql query
       this.queryType = this.setQueryType(cursor, direction);
