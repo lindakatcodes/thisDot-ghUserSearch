@@ -1,3 +1,4 @@
+/* Overall page styles */
 :root {
   --lightblue: #40678D;
   --darkblue: #253D58;
@@ -22,183 +23,95 @@ main {
 }
 
 h1 {
-  text-align: center;
   font-family: serif;
+  text-align: center;
 }
 
 h2, h3 {
   text-align: center;
 }
 
+/* Icons */
 .icons {
-  width: 2%;
-}
-
-.icons-tidbits {
-  width: 15%;
-}
-
-.icons-hire {
-  width: 20%;
+  width: 2.5%;
 }
 
 .icons-arrows {
   width: 1.5%;
 }
 
+/* Search Section */
 .search-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.75fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  grid-gap: 5px 10px;
+  margin: 2% auto 0;
+  width: 55%;
 }
 
-.search-bar-label {
+.search-label {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
   font-size: 1.1rem;
 }
 
-.search {
-  border-radius: 5px;
+.search-input {
+  grid-column: 1 / 3;
+  grid-row: 2;
   padding: 1%;
-  flex-grow: 2;
-  margin-right: 1%;
   font-size: 1.05rem;
+  border-radius: 5px;
+}
+
+.search-input:focus {
+  outline: 3px groove var(--lightblue);  
 }
 
 .search-button {
-  width: 20%;
+  grid-column: 3;
+  grid-row: 2;
+  padding: 2.5% 0;
   box-shadow: 1px 1.5px 1px var(--darkgray);
-  border-radius: 5px;
-  background: var(--lightgray);
-  cursor: pointer;
   font-size: 1.1rem;
+  background: var(--lightgray);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Results Section */
+.results {
+  margin-top: 4%;
 }
 
 .loading {
   text-align: center;
 }
 
-.results {
-  margin-top: 6%;
+.results-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 10px;
 }
 
-.result-item {
-  padding: 1%;
-  width: 95%;
-  margin: 0 auto 4%;
-  border: 1px solid var(--lightgray);
-  display: flex;
-  flex-flow: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  box-shadow: 1px 1px 6px 1px var(--lightgray);
-}
-
-.result-img {
-  width: 45%;
-  margin: 0 auto;
-}
-
-.result-names {
-  margin-top: 1%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-
-.username {
-  color: var(--lightblue);
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.username:hover {
-  color: var(--darkblue);
-}
-
-.display {
-  margin-top: 1%;
-  color: var(--lightgray);
-  text-decoration: none;
-}
-
-.result-info {
-  margin: 0 1%;
-}
-
-.result-tidbits {
-  display: flex;
-  font-size: 0.85rem;
-  justify-content: space-around;
-}
-
-.hireable {
-  color: var(--green);
-  font-weight: bold;
-}
-
-.result-bio {
-  text-align: center;
-  margin: 1%;
-}
-
-.result-repos {
-  margin-top: 3%;
-}
-
-.repo-wrapper {
-  margin-left: 2%;
-}
-
-.repo-name {
-  margin-top: 1%;
-  font-weight: bold;
-  color: var(--lightblue);
-}
-
-.repo-name:hover {
-  color: var(--darkblue);
-}
-
-.repo-desc {
-  margin: 0;
-}
-
-.repo-lang {
-  display: flex;
-  justify-content: center;
-  font-size: 0.9rem;
-  padding: 0;
-  margin-top: 1%;
-}
-
-.repo-lang li {
-  color: var(--green);
-  font-weight: bold;
-  padding: 1.5% 4%;
-  border-radius: 5px;
-  list-style: none;
-}
-
-hr {
-  width: 55%;
-  color: var(--lightgray);
-}
-
-.pagination {
+/* Navigation Section */
+.navigation {
   display: grid;
   grid-template-areas: "prev next";
   align-items: center;
-  margin-bottom:6%;
+  margin: 2% 0 6%;
 }
 
-.pagination button {
+.navigation button {
+  font-size: 1.4rem;
   background: none;
   border: none;
-  font-size: 1.2rem;
   cursor: pointer;
 }
 
-.pagination button:hover {
+.navigation button:hover {
   color: var(--green);
 }
 
@@ -210,26 +123,45 @@ hr {
   grid-area: next;
 }
 
-@media screen and (min-width: 700px) {
-  .search-wrapper {
-    width: 50%;
-    margin: 1% auto 0;
+/* Media Queries */
+@media screen and (max-width: 620px) {
+  .icons {
+    width: 4%;
   }
 
-  .search-bar-label {
-    display: block;
-    width: 50%;
-    margin: 0 auto;
+  .icons-arrows {
+    width: 5%;
+  }
+
+  .search-wrapper {
+    width: 95%;
+  }
+
+  .search-label {
+    grid-column: 1 / 4;
+    text-align: center;
   }
 
   .results-wrapper {
     display: flex;
     flex-wrap: wrap;
   }
+}
 
-  .result-item {
-    width: 30%;
-    justify-content: flex-start;
+@media screen and (min-width: 620px) and (max-width: 1280px) {
+  .icons {
+    width: 3.5%;
   }
 
+  .icons-arrows {
+    width: 2.5%;
+  }
+  
+  .search-wrapper {
+    width: 75%;
+  }
+
+  .results-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
 }
