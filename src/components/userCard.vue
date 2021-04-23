@@ -1,4 +1,5 @@
 <template>
+<transition name="fade">
   <div class="person-wrapper">
     <img :src="person.avatarUrl" class="person-img">
     <div class="person-names">
@@ -24,6 +25,7 @@
       </div>
     </div>
   </div>
+</transition>
 </template>
 
 <script>
@@ -39,8 +41,6 @@
   .person-wrapper {
     display: flex;
     flex-flow: column;
-    /* justify-content: center; */
-    /* flex-wrap: wrap; */
     width: 95%;
     margin: 0 auto 4%;
     padding: 1%;

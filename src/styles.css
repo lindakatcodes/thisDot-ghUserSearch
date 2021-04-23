@@ -2,8 +2,8 @@
 :root {
   --lightblue: #40678D;
   --darkblue: #253D58;
-  --green: #4F9D25;
-  --lightgray: #9E9E9E;
+  --green: #2a810f;
+  --lightgray: #6c6c6c;
   --darkgray: #232221;
   --white: #FAFAFA;
 }
@@ -29,6 +29,14 @@ h1 {
 
 h2, h3 {
   text-align: center;
+}
+
+/* Transition animation */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 /* Icons */
@@ -76,6 +84,7 @@ h2, h3 {
   box-shadow: 1px 1.5px 1px var(--darkgray);
   font-size: 1.1rem;
   background: var(--lightgray);
+  color: var(--white);
   border-radius: 5px;
   cursor: pointer;
 }

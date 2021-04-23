@@ -10,6 +10,7 @@
       <p class="loading" v-show="loading">Loading results...</p>
       <h2 v-show="noUsers">Sorry, it looks like there's no results for that search! Please try a new name or check your spelling.</h2>
       <h2 v-show="userCount > 0">Found {{ userCount }} results!</h2>
+      <Sample v-if="showSamples"></Sample>
       <div class="results-wrapper">
         <UserCard v-for="person in users" :key="person.cursor" :person="person" />
       </div>
@@ -24,13 +25,16 @@
 <script>
 import Vue from "vue";
 import UserCard from "./components/userCard.vue";
+import Sample from "./components/sample.vue";
 
 export default Vue.extend({
   components: {
     UserCard,
+    Sample,
   },
   data() {
     return {
+      showSamples: true,
       queryText: '',
       queryType: '',
       users: {},
@@ -48,6 +52,7 @@ export default Vue.extend({
   methods: {
     // clear any previously set data, to ensure we don't get mixed up info
     clearData() {
+      this.showSamples = false;
       this.queryType = '';
       this.users = {};
       this.noUsers = false;
