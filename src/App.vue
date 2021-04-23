@@ -2,7 +2,7 @@
   <main class="main-wrapper">
     <h1>GitHub User Search</h1>
     <section class="search-wrapper">
-        <Label for="search-bar" class="search-label"> <img src="../static/icons/search.svg" class="icons"> Who would you like to search for?</Label>
+        <Label for="search-bar" class="search-label"> <img src="../static/icons/search.svg" class="icons" aria-hidden="true"> Who would you like to search for?</Label>
         <input type="text" name="search-bar" class="search-input" placeholder="GitHub user name" v-model="queryText" v-on:keypress.enter="getData(null, 'first')">
         <button class="search-button" type="button" v-on:click="getData(null, 'first')">Search</button>
     </section>
@@ -16,8 +16,8 @@
       </div>
     </section>
     <section class="navigation" v-if="pageInfo.prev || pageInfo.next">
-      <button type="button" class="prev-arrow" v-if="pageInfo.prev" v-on:click="getData(pageInfo.firstUser, 'backward')"><img src="../static/icons/chevron-left.svg" class="icons icons-arrows"> Prev Page</button>
-      <button type="button" class="next-arrow" v-if="pageInfo.next" v-on:click="getData(pageInfo.lastUser, 'forward')">Next Page <img src="../static/icons/chevron-right.svg" class="icons icons-arrows"></button>
+      <button type="button" class="prev-arrow" v-if="pageInfo.prev" v-on:click="getData(pageInfo.firstUser, 'backward')"><img src="../static/icons/chevron-left.svg" class="icons icons-arrows" aria-hidden="true"> Prev Page</button>
+      <button type="button" class="next-arrow" v-if="pageInfo.next" v-on:click="getData(pageInfo.lastUser, 'forward')">Next Page <img src="../static/icons/chevron-right.svg" class="icons icons-arrows" aria-hidden="true"></button>
     </section>
   </main>
 </template>

@@ -1,16 +1,16 @@
 <template>
 <transition name="fade">
   <div class="person-wrapper">
-    <img :src="person.avatarUrl" class="person-img">
+    <img :src="person.avatarUrl" class="person-img" :alt="`Profile photo of ${person.name}`">
     <div class="person-names">
       <a :href="person.url" class="username" target="_blank">{{ person.login }}</a>
       <a :href="person.url" v-if="person.name" class="display-name" target="_blank">{{ person.name }}</a>
     </div>
     <div class="person-about">
       <div class="person-stats">  
-        <p class="hireable" v-if="person.isHireable"><img src="../../static/icons/exclamation-circle.svg" class="icons icons-hire"> For Hire!</p>
-        <p class="followers"><img src="../../static/icons/user.svg" class="icons icons-follow"> <span class="count">{{ person.followers.totalCount }}</span> <span class="count-text">followers</span></p>
-        <p class="starred"><img src="../../static/icons/star.svg" class="icons icons-star"> <span class="count">{{ person.starredRepositories.totalCount }}</span> <span class="count-text"> starred repos</span></p>
+        <p class="hireable" v-if="person.isHireable"><img src="../../static/icons/exclamation-circle.svg" class="icons icons-hire" aria-hidden="true"> For Hire!</p>
+        <p class="followers"><img src="../../static/icons/user.svg" class="icons icons-follow" aria-hidden="true"> <span class="count">{{ person.followers.totalCount }}</span> <span class="count-text">followers</span></p>
+        <p class="starred"><img src="../../static/icons/star.svg" class="icons icons-star" aria-hidden="true"> <span class="count">{{ person.starredRepositories.totalCount }}</span> <span class="count-text"> starred repos</span></p>
       </div>
       <p class="person-bio">{{ person.bio }}</p>
     </div>
