@@ -32,7 +32,7 @@ That should be it! Parcel provides a local dev server that will read the `index.
 
 - **Serverless API Call** - I wasn't satisfied with having the main API call directly in the `App` file and have wanted to experiment with serverless functions for a while. So I split all that logic into a new file and have it running on Netlify! This worked surprisingly easier than I expected. Now in the `App` file, it's two lines of code to get the user data. Plus, any future changes to the API logic will be easier to find. I also did some refactoring on my previous code. Before, I had two separate calls - one for the initial API call and one for pagination. This lead to some duplicated code that wasn't necessary. Now, all links use the same API call, and the necessary options (first/last or before/after for the quantity and cursor) are subbed in by variables. This makes it much easier to see what's going on and maintain.
 
-- **Accessibility Improvements** - I also ran an AXE audit on my site and made a few improvements. Most of what needed adjusting was a few colors to meet contrast requirements, adding alt text to images, and adding the `aria-hidden` label to my icons, since all of those are in places with other identifying text and are just for visual appeal.
+- **Accessibility Improvements** - I also ran an AXE audit on my site and made a few improvements. Most of what needed adjusting was a few colors to meet contrast requirements, adding alt text to images, and adding the `aria-hidden` label to my icons, since all of those are in places with other identifying text and are just for visual appeal. I also added a focus state for the search bar.
 
 - **Small Adjustments** - I also slightly adjusted some spacing on the card layouts and text sizes, improved some of the overall page layouts with grid and flexbox, and added some placeholder cards for the initial page load. The placeholder images were created on Figma, with stickers designed by Alice Lee! The cats were too cute to resist.
 
@@ -42,6 +42,7 @@ Even with the changes I've already made, there's always more that can be better.
 
 - Testing! I'd love to add some tests to help ensure things are working as expected.
 - I'd love to create a dark mode version and a toggle to switch between the two.
+- I wanted to add a keyboard shortcut to go to the search bar, but wasn't having any luck getting it working. I think that would be a nice touch to add, if I can figure out how Vue handles those events.
 - I'm still not super impressed with the `userCard` design. It still feels like it's too big, though it does need to hold a decent bit of information. Still, something feels a little off about them.
 - The scope of this project would make it a great candidate for learning! I'd like to make a REST version and also make a version using React. Then maybe I could have a way to switch between different versions or use the process to write some blog posts on what's different and what's similar between the options.
 
