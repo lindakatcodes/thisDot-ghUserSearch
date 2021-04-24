@@ -50,7 +50,6 @@ export default Vue.extend({
     }
   },
   methods: {
-    // clear any previously set data, to ensure we don't get mixed up info
     clearData() {
       this.showSamples = false;
       this.queryType = '';
@@ -64,11 +63,10 @@ export default Vue.extend({
         lastUser: '',
       };
     },
-    // call GH GraphQL API to get user data & update state
     async getData(cursor, direction) {
       this.loading = true;
 
-      //if this is a paginated call, scroll user to top of page
+      // only needed if we already have data showing
       if (direction !== 'first') {
         window.scroll({
           top: 0,
@@ -77,45 +75,40 @@ export default Vue.extend({
       });
       }
 
-      // if this is a first call, clear any previous data
+      // only desired if we're performing a new search
       if (direction === 'first') {
         this.clearData();
       }
 
-      // determine which type of query params we need to send our gql query - is this the first search, or are we paginating forwards or backwards?
       this.queryType = this.setQueryType(cursor, direction);
 
-      // make the actual API call
       const userData = await fetch(`.netlify/functions/githubApiCall?q=${this.queryText}&type=${this.queryType}`).then(res => res.json());
 
-      // set the number of users
       this.userCount = userData.overview.userCount;
       
-      // logic so if no results return, user will see informational data
+      // provides user with informational text if no results found, so it's different from a starting screen
       if (this.userCount === 0) {
         this.noUsers = true;
         return;
       }
 
-      // set info for cursors and pagination
       const pageData = userData.overview.pageInfo;
       this.pageInfo.prev = pageData.hasPreviousPage;
       this.pageInfo.next = pageData.hasNextPage;
       this.pageInfo.firstUser = pageData.startCursor;
       this.pageInfo.lastUser = pageData.endCursor;
 
-      // filtering user data to remove anyone who has a name but nothing else
+      // to keep userCards more interesting, filtered out any items that only have a name and nothing else
       const results = userData.usersInfo;
       const legitUsers = results.filter(user => {
         return Object.keys(user).length > 0;
       });
 
-      // update userCount, remove loading state, then show users
       this.userCount -= legitUsers.length;
       this.loading = false;
       this.users = legitUsers;
     },
-    // determines what needs to be added to the search query to get the right results
+    // allows use of the same graphql query, just adding in the first / last and before / after params as necessary, depending on the type of search
     setQueryType(cursor, direction) {   
       const firstQuery = `first: 9`;
       const backQuery = `last: 9, before: "${cursor}"`;

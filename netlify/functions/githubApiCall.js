@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 
-// sets the actual query, with a variable depending on which type of query this is: initial, paginate forward, paginate backward
 const gqlQuery = (type) => `query($query: String!) {
   search(query: $query, type: USER, ${type}) {
     userCount
