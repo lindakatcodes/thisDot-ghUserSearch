@@ -1,0 +1,171 @@
+:root {
+  --lightblue: #40678D;
+  --darkblue: #253D58;
+  --green: #2a810f;
+  --lightgray: #6c6c6c;
+  --darkgray: #232221;
+  --white: #FAFAFA;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--white);
+  color: var(--darkgray);
+}
+
+main {
+  margin: 0 3%;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: serif;
+  text-align: center;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.icons {
+  width: 2.5%;
+}
+
+.icons-arrows {
+  width: 1.5%;
+}
+
+.search-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.75fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  grid-gap: 5px 10px;
+  margin: 2% auto 0;
+  width: 55%;
+}
+
+.search-label {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  font-size: 1.1rem;
+}
+
+.search-input {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  padding: 1%;
+  font-size: 1.05rem;
+  border-radius: 5px;
+}
+
+.search-input:focus {
+  outline: 3px groove var(--lightblue);  
+}
+
+.search-button {
+  grid-column: 3;
+  grid-row: 2;
+  padding: 2.5% 0;
+  box-shadow: 1px 1.5px 1px var(--darkgray);
+  font-size: 1.1rem;
+  background: var(--lightgray);
+  color: var(--white);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.results {
+  margin-top: 4%;
+}
+
+.loading {
+  text-align: center;
+}
+
+.results-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 10px;
+}
+
+.navigation {
+  display: grid;
+  grid-template-areas: "prev next";
+  align-items: center;
+  margin: 2% 0 6%;
+}
+
+.navigation button {
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navigation button:hover {
+  color: var(--green);
+}
+
+.prev-arrow {
+  grid-area: prev;
+}
+
+.next-arrow {
+  grid-area: next;
+}
+
+/* Small screens */
+@media screen and (max-width: 620px) {
+  .icons {
+    width: 4%;
+  }
+
+  .icons-arrows {
+    width: 5%;
+  }
+
+  .search-wrapper {
+    width: 95%;
+  }
+
+  .search-label {
+    grid-column: 1 / 4;
+    text-align: center;
+  }
+
+  .results-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* Medium screens */
+@media screen and (min-width: 620px) and (max-width: 1280px) {
+  .icons {
+    width: 3.5%;
+  }
+
+  .icons-arrows {
+    width: 2.5%;
+  }
+  
+  .search-wrapper {
+    width: 75%;
+  }
+
+  .results-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -4,6 +4,9 @@
   "description": "Code Exercise for This Dot Labs JS Interview",
   "main": "index.html",
   "dependencies": {
+    "components": "^0.1.0",
+    "netlify-lambda": "^2.0.4",
+    "node-fetch": "^2.6.1",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4"
   },
