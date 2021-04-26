@@ -82,7 +82,7 @@ export default Vue.extend({
 
       this.queryType = this.setQueryType(cursor, direction);
 
-      const userData = await fetch(`.netlify/functions/githubApiCall?q=${this.queryText}&type=${this.queryType}`).then(res => res.json());
+      const userData = await fetch(`https://github-search-td.netlify.app/.netlify/functions/githubApiCall?q=${this.queryText}&type=${this.queryType}`).then(res => res.json());
 
       this.userCount = userData.overview.userCount;
       
