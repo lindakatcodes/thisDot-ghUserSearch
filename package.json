@@ -19,6 +19,9 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lindakatcodes/thisDot-ghUserSearch.git"
