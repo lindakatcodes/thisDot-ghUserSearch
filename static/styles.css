@@ -138,6 +138,7 @@ h2, h3 {
 
   .search-wrapper {
     width: 95%;
+    grid-gap: 5px 20px;
   }
 
   .search-label {

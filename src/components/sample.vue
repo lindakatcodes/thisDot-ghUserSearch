@@ -24,4 +24,10 @@
   .card {
     height: 69vh;
   }
+
+  @media screen and (max-width: 1280px) {
+    .wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
