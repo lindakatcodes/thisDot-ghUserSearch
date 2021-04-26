@@ -20,7 +20,7 @@
     "build": "parcel build index.html"
   },
   "browserslist": [
-    "last 2 versions"
+    "since 2017-06"
   ],
   "repository": {
     "type": "git",
